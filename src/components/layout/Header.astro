@@ -3,6 +3,8 @@ import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { siteConfig, menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import b3HeaderLogo from "@/assets/images/logo.svg";
 ---
 
 <header
@@ -41,9 +43,13 @@ import { Icon } from "astro-icon/components";
 				</div>
 				-->
 				<div title={siteConfig.title}>
-					<svg class="inline-block size-8 fill-current text-accent-base dark:text-accent-two drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)]">
-						<use href="/brand.svg#citrus"></use>
-					</svg>
+					<Image 
+						src={b3HeaderLogo} 
+						alt="B³ Logo" 
+						class="inline-block w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)]"
+						width={48}
+						height={48}
+					/>
 				</div>
 				
 				<strong class="'max-[320px]:hidden' bg-clip-text text-transparent bg-gradient-to-r from-accent-one to-accent-two hidden xs:block z-10 mb-0.5 ms-2 text-2xl group-hover:text-accent-one">
