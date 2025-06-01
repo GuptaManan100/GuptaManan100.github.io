@@ -1,6 +1,8 @@
 ---
 import SocialList from "@/components/SocialList.astro";
 import PageLayout from "@/layouts/Base.astro";
+import { Image } from "astro:assets";
+import mainLogo from "@/assets/images/mainLogo.png";
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -14,12 +16,15 @@ import PageLayout from "@/layouts/Base.astro";
 	</div>
 	<section class="max-w-2xl mx-auto relative flex items-center justify-center h-screen -mt-24">
 		<div class="w-full text-center">
-			<span class="title text-4xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent mb-2 block">
-				B³
-			</span>
-			<span class="title text-xl text-textColor/80 dark:text-textColor/70 block mb-6">
-				Bytes • Beats • Books
-			</span>
+			<div class="flex justify-center mb-8">
+				<Image 
+					src={mainLogo}
+					alt="B³ - Bytes Beats Books Logo" 
+					class="max-w-64 max-h-64 w-auto h-auto"
+					quality="high"
+					format="webp"
+				/>
+			</div>
 			<div class="mt-4 mb-4 text-lg font-medium max-w-3xl mx-auto text-left space-y-4">
 				<p>
 					Hi there! I'm <strong>Manan Gupta</strong>, a software engineer passionate about distributed systems, high-availability architectures, and anything that challenges the way we build scalable software. When I'm not deep in code (check out my projects on <a href="https://github.com/GuptaManan100" class="text-accent-one hover:text-accent-two underline" target="_blank" rel="noopener noreferrer">GitHub</a>), you'll find me strumming my guitar, exploring new cities as a digital nomad, or buried in a good book (feel free to connect on <a href="https://www.linkedin.com/in/manan-100/" class="text-accent-one hover:text-accent-two underline" target="_blank" rel="noopener noreferrer">LinkedIn</a> if you'd like to chat).
