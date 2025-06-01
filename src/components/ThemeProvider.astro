@@ -44,4 +44,8 @@
 
 	// listen for prefers-color-scheme change.
 	lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
+	
+	// Additional mobile support
+	window.addEventListener("load", () => setTheme(getUserPref()));
+	window.addEventListener("pageshow", () => setTheme(getUserPref()));
 </script>
