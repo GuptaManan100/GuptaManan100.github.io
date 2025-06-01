@@ -30,7 +30,7 @@ interface Props {
 const { page, uniqueTags } = Astro.props;
 
 const meta = {
-	description: "Explore coding insights, distributed systems, and technical deep-dives",
+	description: "Deep dives into distributed systems, HA patterns & all things code",
 	title: "Bytes",
 };
 
@@ -58,7 +58,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 		<span class="bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent">
 			Bytes
 		</span>
-		<span class="text-textColor/60 text-lg">• Code & Systems</span>
+		<span class="text-textColor/60 text-lg">• Logic & Latency</span>
 	</h1>
 	<div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
 		<section aria-label="Coding blog post list" class="grow">
