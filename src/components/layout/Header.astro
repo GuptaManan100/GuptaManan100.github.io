@@ -4,7 +4,8 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import { siteConfig, menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import b3HeaderLogo from "@/assets/images/logo.svg";
+import b3LogoLight from "@/assets/images/logo-light.svg";
+import b3LogoDark from "@/assets/images/logo-dark.svg";
 ---
 
 <header
@@ -44,9 +45,16 @@ import b3HeaderLogo from "@/assets/images/logo.svg";
 				-->
 				<div title={siteConfig.title}>
 					<Image 
-						src={b3HeaderLogo} 
+						src={b3LogoLight} 
 						alt="B³ Logo" 
-						class="inline-block w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)]"
+						class="inline-block w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)] dark:hidden"
+						width={48}
+						height={48}
+					/>
+					<Image 
+						src={b3LogoDark} 
+						alt="B³ Logo" 
+						class="hidden w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)] dark:inline-block"
 						width={48}
 						height={48}
 					/>

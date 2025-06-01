@@ -1,10 +1,6 @@
 <svg width="128" height="128" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:hsl(200deg 53% 27%);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:hsl(351deg 66% 48%);stop-opacity:1" />
-        </linearGradient>
-        <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" style="stop-color:hsl(50deg 49% 80%);stop-opacity:1" />
             <stop offset="100%" style="stop-color:hsl(50deg 72% 63%);stop-opacity:1" />
         </linearGradient>
@@ -13,11 +9,7 @@
         .text {
             font-family: 'Georgia', serif;
             font-weight: bold;
-            fill: url(#lightGradient);
-        }
-        
-        [data-theme="dark"] .text {
-            fill: url(#darkGradient);
+            fill: url(#textGradient);
         }
     </style>
     <text x="10" y="60" font-size="50" class="text">B</text>
