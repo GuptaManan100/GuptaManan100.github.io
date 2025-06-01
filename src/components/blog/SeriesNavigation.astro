@@ -1,0 +1,138 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { getAllPosts } from "@/data/post";
+
+interface Props {
+	currentPost: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
+}
+
+const { currentPost } = Astro.props;
+
+// Only show series navigation if post has series info
+if (!currentPost.data.seriesId || !currentPost.data.orderInSeries) {
+	return null;
+}
+
+// Get all posts and filter by same series
+const allPosts = await getAllPosts();
+const seriesPosts = allPosts
+	.filter(post => post.data.seriesId === currentPost.data.seriesId)
+	.sort((a, b) => (a.data.orderInSeries || 0) - (b.data.orderInSeries || 0));
+
+const currentIndex = seriesPosts.findIndex(post => post.id === currentPost.id);
+const previousPost = currentIndex > 0 ? seriesPosts[currentIndex - 1] : null;
+const nextPost = currentIndex < seriesPosts.length - 1 ? seriesPosts[currentIndex + 1] : null;
+
+// Generate URLs based on collection
+const getPostUrl = (post: typeof currentPost) => {
+	return `/${post.collection}/${post.id}/`;
+};
+---
+
+<aside
+	id="series-panel"
+	class="md:sticky md:top-20 z-10 hidden md:w-[14rem] md:min-w-[14rem] md:rounded-lg md:block"
+>
+	<div class="sticky top-20 rounded-t-lg">
+		<div class="sticky top-20 bg-bgColor rounded-t-lg">
+			<div class="sticky top-20 flex pt-4 ps-8 pb-2 items-end title rounded-t-lg bg-color-75 pe-4 gap-x-1 border-t border-l border-r border-special-light">
+				<h4 class="title">Series Navigation</h4>
+				<button
+					id="close-series"
+					class="absolute top-4 right-4 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
+					aria-label="Close Series Navigation"
+				>
+					<Icon
+						aria-hidden="true"
+						class="h-6 w-6"
+						focusable="false"
+						name="hugeicons:cancel-01"
+					/>
+				</button>
+			</div>
+		</div>
+		<div class="bg-bgColor rounded-b-lg">
+			<div class="rounded-b-lg pb-6 bg-color-75 border-b border-l border-r border-special-light">
+				<div class="max-h-[calc(100vh-11rem)] h-auto overflow-y-auto overflow-hidden px-8">
+					
+					<!-- Series Info -->
+					<div class="mb-4">
+						<h5 class="font-semibold text-accent-base mb-2">{currentPost.data.seriesId}</h5>
+						<p class="text-sm text-lighter">Part {currentPost.data.orderInSeries} of {seriesPosts.length}</p>
+					</div>
+
+					<!-- Navigation Buttons -->
+					<div class="flex flex-col gap-2 mb-4">
+						{previousPost ? (
+							<a
+								href={getPostUrl(previousPost)}
+								class="flex items-center gap-2 p-2 rounded-lg bg-accent-base/5 hover:bg-accent-base/10 text-sm group"
+							>
+								<Icon class="w-4 h-4 text-accent-base" name="hugeicons:arrow-left-01" />
+								<div class="flex-1 min-w-0">
+									<div class="text-xs text-lighter">Previous</div>
+									<div class="truncate group-hover:text-accent-base">Part {previousPost.data.orderInSeries}</div>
+								</div>
+							</a>
+						) : (
+							<div class="flex items-center gap-2 p-2 rounded-lg bg-color-100 text-sm opacity-50">
+								<Icon class="w-4 h-4 text-lighter" name="hugeicons:arrow-left-01" />
+								<div class="flex-1">
+									<div class="text-xs text-lighter">No previous post</div>
+								</div>
+							</div>
+						)}
+
+						{nextPost ? (
+							<a
+								href={getPostUrl(nextPost)}
+								class="flex items-center gap-2 p-2 rounded-lg bg-accent-base/5 hover:bg-accent-base/10 text-sm group"
+							>
+								<div class="flex-1 min-w-0 text-right">
+									<div class="text-xs text-lighter">Next</div>
+									<div class="truncate group-hover:text-accent-base">Part {nextPost.data.orderInSeries}</div>
+								</div>
+								<Icon class="w-4 h-4 text-accent-base" name="hugeicons:arrow-right-01" />
+							</a>
+						) : (
+							<div class="flex items-center gap-2 p-2 rounded-lg bg-color-100 text-sm opacity-50">
+								<div class="flex-1 text-right">
+									<div class="text-xs text-lighter">No next post</div>
+								</div>
+								<Icon class="w-4 h-4 text-lighter" name="hugeicons:arrow-right-01" />
+							</div>
+						)}
+					</div>
+
+					<!-- All Posts in Series -->
+					<div>
+						<h6 class="font-medium text-sm mb-2 text-accent-base">All Posts</h6>
+						<ul class="space-y-1 text-sm">
+							{seriesPosts.map((post) => (
+								<li>
+									<a
+										href={getPostUrl(post)}
+										class={`block p-2 rounded-lg hover:bg-accent-base/5 ${
+											post.id === currentPost.id 
+												? 'bg-accent-base/10 text-accent-base font-medium' 
+												: 'text-textColor hover:text-accent-base'
+										}`}
+									>
+										<div class="flex items-center gap-2">
+											<span class="text-xs text-lighter w-8">Part {post.data.orderInSeries}</span>
+											<span class="flex-1 truncate">{post.data.title}</span>
+											{post.id === currentPost.id && (
+												<Icon class="w-3 h-3 text-accent-base flex-shrink-0" name="hugeicons:checkmark-circle-02" />
+											)}
+										</div>
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</aside>
