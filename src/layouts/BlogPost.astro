@@ -4,7 +4,6 @@ import Masthead from "@/components/blog/Masthead.astro";
 import TOC from "@/components/blog/TOC.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import BaseLayout from "./Base.astro";
-import SeriesPanel from "@/components/SeriesPanel.astro";
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { ogImage, title, description, updatedDate, publishDate, seriesId } = post.data;
+const { ogImage, title, description, updatedDate, publishDate } = post.data;
 
 const socialImage = ogImage ?? `/og-image/${post.id}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
@@ -66,8 +65,6 @@ const { headings } = await render(post);
 	</div>
 	-->
 
-	<!-- SeriesPanel is inserted into the named slot "sidebar" -->
-	{seriesId && (<SeriesPanel slot="sidebar" seriesId={seriesId} />)}
 
 	<Masthead content={post} />
 	
@@ -111,18 +108,6 @@ const { headings } = await render(post);
 		</button>
 	</div>
 
-	<!-- Series button for mobile screens -->
-	{seriesId && (
-		<mobile-button
-			id="toggle-panel-mobile"
-			class="size-12 flex items-center justify-center block sm:hidden fixed bottom-4 shadow-[0px_10px_25px_rgba(0,0,0,0.15)] border border-special-lighter right-4 z-50 rounded-lg bg-bgColor text-accent-base hover:text-bg-accent-base/90"
-			aria-label="Toggle Series Panel"
-		>
-			<span class="absolute inset-0 rounded-lg flex items-center justify-center bg-special-light hover:text-accent-base/90">
-				<Icon class="size-8" name="solar:notes-bold"/>
-			</span>
-		</mobile-button>
-	)}
 
 	<!-- NEEDS IMPROVEMENT!!! -->
 	<!-- Table of Contents button for mobile screens -->
@@ -182,75 +167,6 @@ const { headings } = await render(post);
 	});
 </script>
 
-<script>
-	const ANIMATION_DURATION = 300;
-	// Get the button and panel elements
-	const togglePanelBtn = document.getElementById("toggle-panel");
-	const closePanelBtn = document.getElementById("close-panel");
-	const seriesPanel = document.getElementById("series-panel");
-	const togglePanelMobileBtn = document.getElementById("toggle-panel-mobile");
-
-	// Ensure the seriesPanel exists
-	if (!seriesPanel) {
-		console.error("Element series-panel not found");
-		throw new Error("series-panel is required");
-	}
-
-	// Function to check if the panel is visible
-	const isPanelVisible = () => {
-		const isScreenLg = window.matchMedia("(min-width: 1024px)").matches; // Large screens
-		return (
-			(isScreenLg && seriesPanel.classList.contains("lg:block")) ||
-			(!isScreenLg && !seriesPanel.classList.contains("hidden"))
-		);
-	};
-
-	// Function to hide the panel
-	const hidePanel = () => {
-		seriesPanel.classList.add("opacity-0", "-translate-x-full");
-		setTimeout(() => {
-			seriesPanel.classList.remove("block", "lg:block");
-			seriesPanel.classList.add("hidden");
-		}, ANIMATION_DURATION);
-	};
-
-	// Function to show the panel
-	const showPanel = () => {
-		seriesPanel.classList.remove("hidden");
-		seriesPanel.classList.add("block", "lg:block");
-		setTimeout(() => {
-			seriesPanel.classList.remove("opacity-0", "-translate-x-full");
-		}, 10);
-	};
-
-	// Common event handler for both buttons
-	const togglePanel = () => {
-		if (isPanelVisible()) {
-			hidePanel(); // If visible, hide it
-		} else {
-			showPanel(); // If hidden, show it
-		}
-	};
-
-	// Event handlers for both buttons
-	if (togglePanelBtn) {
-		togglePanelBtn.addEventListener("click", togglePanel);
-	} else {
-		console.error("Element toggle-panel not found");
-	}
-
-	if (togglePanelMobileBtn) {
-		togglePanelMobileBtn.addEventListener("click", togglePanel);
-	} else {
-		console.error("Element toggle-panel-mobile not found");
-	}
-
-	if (closePanelBtn) {
-		closePanelBtn.addEventListener("click", hidePanel);
-	} else {
-		console.error("Element close-panel not found");
-	}
-</script>
 
 <script>
 	// Get the button and panel elements
