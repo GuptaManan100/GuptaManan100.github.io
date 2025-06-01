@@ -3,6 +3,7 @@ import SocialList from "@/components/SocialList.astro";
 import PageLayout from "@/layouts/Base.astro";
 import { Image } from "astro:assets";
 import mainLogo from "@/assets/images/mainLogo.png";
+import mainLogoDark from "@/assets/images/mainLogo-dark.png";
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -20,7 +21,14 @@ import mainLogo from "@/assets/images/mainLogo.png";
 				<Image 
 					src={mainLogo}
 					alt="B³ - Bytes Beats Books Logo" 
-					class="max-w-64 max-h-64 w-auto h-auto"
+					class="max-w-64 max-h-64 w-auto h-auto dark:hidden"
+					quality="high"
+					format="webp"
+				/>
+				<Image 
+					src={mainLogoDark}
+					alt="B³ - Bytes Beats Books Logo" 
+					class="hidden max-w-64 max-h-64 w-auto h-auto dark:block"
 					quality="high"
 					format="webp"
 				/>
