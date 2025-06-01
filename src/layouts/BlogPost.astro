@@ -7,7 +7,7 @@ import BaseLayout from "./Base.astro";
 import { Icon } from "astro-icon/components";
 
 interface Props {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
 }
 
 const { post } = Astro.props;

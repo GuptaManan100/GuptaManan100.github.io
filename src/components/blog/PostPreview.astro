@@ -4,11 +4,17 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
 	withDesc?: boolean;
 };
 
 const { as: Tag = "div", post, withDesc = false } = Astro.props;
+
+// Generate the correct URL based on collection type
+const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">) => {
+	const collection = post.collection;
+	return `/${collection}/${post.id}/`;
+};
 ---
 
 <div class={withDesc ? "flex flex-col" : "flex flex-col grow sm:flex-row sm:items-center sm:justify-between"}>
@@ -26,7 +32,7 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 				}}
 			/>
 			<Tag class="citrus-link font-medium text-accent-base sm:order-1 sm:flex-gro md:line-clamp-1">
-				<a data-astro-prefetch href={`/posts/${post.id}/`}>
+				<a data-astro-prefetch href={getPostUrl(post)}>
 					{post.data.draft && <span class="text-red-500">(Draft) </span>}
 					{post.data.title}
 				</a>
@@ -46,7 +52,7 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 				}}
 			/>
 			<Tag class="citrus-link font-medium text-accent-base mt-2.5">
-				<a data-astro-prefetch href={`/posts/${post.id}/`}>
+				<a data-astro-prefetch href={getPostUrl(post)}>
 					{post.data.title}
 				</a>
 			</Tag>
