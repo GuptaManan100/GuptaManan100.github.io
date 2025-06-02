@@ -9,7 +9,7 @@ const baseSchema = z.object({
 	title: z.string().max(60),
 });
 
-const postSchema = ({ image }) =>
+const postSchema = ({ image }: { image: any }) =>
 	baseSchema.extend({
 		description: z.string(),
 		coverImage: z
@@ -31,6 +31,7 @@ const postSchema = ({ image }) =>
 			.transform((str) => (str ? new Date(str) : undefined)),
 		seriesId: z.string().optional(),
 		orderInSeries: z.number().optional(),
+		weight: z.number().optional(),
 	});
 
 

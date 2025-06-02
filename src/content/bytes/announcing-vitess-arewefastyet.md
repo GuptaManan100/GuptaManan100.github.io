@@ -3,6 +3,7 @@ title: "Announcing Vitess Arewefastyet"
 description: "Announcing Vitess Arewefastyet - Nightly Benchmarks Project"
 publishDate: "2025-06-02"
 tags: ["vitess", "mysql", "benchmark", "arewefastyet"]
+weight: 1
 ---
 
 **Originally published on July 8, 2021 at [vitess.io](https://vitess.io/blog/2021-12-16-rails-that-scales/)**. Co-authored with [Florent Poinsard](https://github.com/frouioui)

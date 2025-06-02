@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { siteConfig } from "@/site.config";
+import { collectionDateSort } from "@/utils/date";
 import rss from "@astrojs/rss";
 
 export const GET = async () => {
@@ -11,7 +12,7 @@ export const GET = async () => {
 
 	const allPosts = [...bytes, ...beats, ...books]
 		.filter(post => !post.data.draft)
-		.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+		.sort(collectionDateSort);
 
 	return rss({
 		title: siteConfig.title,
@@ -24,7 +25,7 @@ export const GET = async () => {
 				title: post.data.title,
 				description: post.data.description,
 				pubDate: post.data.publishDate,
-				link: `${category}/${post.slug}/`,
+				link: `${category}/${post.id}/`,
 			};
 		}),
 	});

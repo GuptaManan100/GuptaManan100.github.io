@@ -15,6 +15,7 @@ export async function getAllPosts(): Promise<B3CollectionEntry[]> {
 
 /** groups posts by year (based on publishDate), using the year as the key
  *  Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so.
+ *  Note: This function preserves the original sorting order within each year group.
  */
 export function groupPostsByYear(posts: B3CollectionEntry[]) {
 	return posts.reduce<Record<string, B3CollectionEntry[]>>((acc, post) => {

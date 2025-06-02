@@ -16,8 +16,18 @@ export function getFormattedDate(
 }
 
 export function collectionDateSort(
-	a: CollectionEntry<"post" | "note">,
-	b: CollectionEntry<"post" | "note">,
+	a: CollectionEntry<"bytes" | "beats" | "books">,
+	b: CollectionEntry<"bytes" | "beats" | "books">,
 ) {
-	return b.data.publishDate.getTime() - a.data.publishDate.getTime();
+	// Primary sort by date (newest first)
+	const dateComparison = b.data.publishDate.getTime() - a.data.publishDate.getTime();
+	
+	// If dates are equal, sort by weight (higher weight first)
+	if (dateComparison === 0) {
+		const weightA = a.data.weight ?? 0;
+		const weightB = b.data.weight ?? 0;
+		return weightB - weightA;
+	}
+	
+	return dateComparison;
 }
