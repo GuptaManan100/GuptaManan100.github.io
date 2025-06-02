@@ -27,7 +27,8 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 		<div class="absolute top-[-85%] right-[-30%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-5"></div>
 	</div>
 	
-	<div class="w-full justify-between sm:flex-col">
+	<div class="w-full hidden md:flex items-center justify-evenly">
+		<!-- Logo and Title -->
 		<div class="flex items-center gap-x-2">
 			<a
 				aria-label={siteConfig.title}
@@ -36,13 +37,6 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 				href="/"
 			>	
 				<!-- Logo -->
-				<!--
-				<div class="pt-1.5">
-					<svg class="inline-block size-8 fill-current text-accent-base drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)]">
-						<use href="/brand.svg#brand"></use>
-					</svg>
-				</div>
-				-->
 				<div title={siteConfig.title}>
 					<Image 
 						src={b3LogoLight} 
@@ -64,65 +58,23 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 					{siteConfig.title}
 				</strong>
 			</a>
-			<nav
-				aria-label="Main menu"
-				class="top-20 text-sm mx-auto ml-4 ml-auto hidden flex-col items-end justify-center gap-x-4 rounded-md bg-bgColor font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
-				id="main-navigation-menu"
-			>	
-				<!--				
-				<a
-					aria-current={Astro.url.pathname === "/" ? "page" : false}
-					class="flex gap-x-1 h-8 items-center justify-center rounded-lg underline-offset-2 hover:underline"
-					href="/"
-				>	
-					<Icon
-						class="size-4 drop-shadow-[0px_1.5px_1.5px_rgba(0,0,0,0.175)]"
-						name="solar:home-2-bold"
-					/>
-					Home
-				</a>
-				<a
-					aria-current={Astro.url.pathname === "/" ? "page" : false}
-					class="flex gap-x-1 h-8 items-center justify-center rounded-lg underline-offset-2 hover:underline"
-					href="/"
-				>	
-					<Icon
-						class="size-4 drop-shadow-[0px_1.5px_1.5px_rgba(0,0,0,0.175)]"
-						name="solar:archive-bold"
-					/>
-					Blog
-				</a>
-				-->
+		</div>
 
-				<!-- Ссылки меню -->
-				{
-					menuLinks.map((link) => (
-						<a
-							aria-current={Astro.url.pathname === link.path ? "page" : false}
-							class="underline-offset-2 hover:underline"
-							data-astro-prefetch
-							href={link.path}
-						>
-							{link.title}
-						</a>
-					))
-				}
-				
-				
-				<!-- Dropdown menu button for large screens. Needs improvement. -->
-				<!--
-				<button
-					aria-expanded="false"
-					aria-haspopup="menu"
-					aria-label="Open main menu"
-					class="hidden md:flex group text-sm relative h-8 w-16 font-medium items-center justify-center px-4 rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
-					id="toggle-navigation-menu"
-					type="button"
+		<!-- Individual Navigation Buttons (evenly spaced) -->
+		{
+			menuLinks.map((link) => (
+				<a
+					aria-current={Astro.url.pathname === link.path ? "page" : false}
+					class="relative flex items-center justify-center h-8 px-4 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
+					data-astro-prefetch
+					href={link.path}
 				>
-					Menu
-				</button>
-				-->
-			</nav>
+					<span class="text-bgColor font-semibold">
+						{link.title}
+					</span>
+				</a>
+			))
+		}
 			
 			<!-- Dropdown menu for large screens. Needs improvement. -->
 			<!--
@@ -160,18 +112,56 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 			</div>
 			-->
 
-			<div class="ml-auto w-fit">
-				<div id="buttons-panel" class="top-4 md:top-8 -ml-[4.5rem] flex space-x-2">
-					<Search />
-					<ThemeToggle />
+		<!-- Search and Theme Buttons -->
+		<div class="flex items-center gap-x-2">
+			<Search />
+			<ThemeToggle />
+		</div>
+	</div>
+
+	<!-- Mobile Header Layout -->
+	<div class="w-full flex md:hidden items-center justify-between">
+		<!-- Logo and Title -->
+		<div class="flex items-center gap-x-2">
+			<a
+				aria-label={siteConfig.title}
+				aria-current={Astro.url.pathname === "/" ? "page" : false}
+				class="group flex h-8 items-center hover:filter-none sm:relative"
+				href="/"
+			>	
+				<div title={siteConfig.title}>
+					<Image 
+						src={b3LogoLight} 
+						alt="B³ Logo" 
+						class="inline-block w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)] dark:hidden"
+						width={48}
+						height={48}
+					/>
+					<Image 
+						src={b3LogoDark} 
+						alt="B³ Logo" 
+						class="hidden w-12 h-12 drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.35)] dark:inline-block"
+						width={48}
+						height={48}
+					/>
 				</div>
-			</div>	
+				
+				<strong class="'max-[320px]:hidden' bg-clip-text text-transparent bg-gradient-to-r from-accent-one to-accent-two hidden xs:block z-10 mb-0.5 ms-2 text-2xl group-hover:text-accent-one">
+					{siteConfig.title}
+				</strong>
+			</a>
+		</div>
+
+		<!-- Mobile Search, Theme, and Menu -->
+		<div class="flex items-center gap-x-2">
+			<Search />
+			<ThemeToggle />
 			
 			<mobile-button
 				aria-expanded="false"
 				aria-haspopup="menu"
 				aria-label="Open main menu"
-				class="group relative h-8 w-8 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base md:invisible md:hidden"
+				class="group relative h-8 w-8 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base"
 				id="toggle-nav-menu-mobile"
 				type="button"
 			>
