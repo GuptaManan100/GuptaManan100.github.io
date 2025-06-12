@@ -1,14 +1,13 @@
 ---
 title: "The Final Curtain"
-description: "A gripping finale to the Detective Kaga series by Keigo Higashino, weaving family drama with intricate mystery."
+description: "Keigo Higashino"
 publishDate: "2025-06-12"
 tags: ["mystery", "detective", "keigo-higashino", "japanese-literature", "thriller", "crime"]
 weight: 1
 ---
 
-# 📚 [*The Final Curtain*](https://www.goodreads.com/book/show/65213104-the-final-curtain) by Keigo Higashino
+# 📚 [*The Final Curtain*](https://www.goodreads.com/book/show/65213104-the-final-curtain)
 
-**Author:** Keigo Higashino  
 **Series:** Detective Kaga #10  
 **Genre:** Mystery, Crime Fiction  
 **Originally Published:** 2013 (Japanese), 2023 (English Translation)
