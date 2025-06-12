@@ -6,7 +6,7 @@ tags: ["mystery", "detective", "keigo-higashino", "japanese-literature", "thrill
 weight: 1
 ---
 
-# 📚 *The Final Curtain* by Keigo Higashino
+# 📚 [*The Final Curtain*](https://www.goodreads.com/book/show/65213104-the-final-curtain) by Keigo Higashino
 
 **Author:** Keigo Higashino  
 **Series:** Detective Kaga #10  
