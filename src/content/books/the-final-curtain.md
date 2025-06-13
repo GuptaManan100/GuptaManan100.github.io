@@ -81,7 +81,7 @@ If we discount these two things, then everything else is very well explained. Th
 
 ## 📖 If You Like This, Check Out
 
-1. **Malice** by Keigo Higashino
-2. **The Tokyo Zodiac Murders** by Soji Shimada
-3. **Evil Under the Sun** by Agatha Christie
+1. **[Malice](https://www.goodreads.com/book/show/20613611-malice)** by Keigo Higashino
+2. **[The Tokyo Zodiac Murders](https://www.goodreads.com/book/show/1321926.The_Tokyo_Zodiac_Murders)** by Soji Shimada
+3. **[Evil Under the Sun](https://www.goodreads.com/book/show/16305.Evil_Under_the_Sun)** by Agatha Christie
 
