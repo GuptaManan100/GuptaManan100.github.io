@@ -154,7 +154,13 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 
 		<!-- Mobile Search, Theme, and Menu -->
 		<div class="flex items-center gap-x-2">
-			<Search />
+			<button
+				id="mobile-search-trigger"
+				class="flex h-8 w-8 items-center justify-center rounded-lg drop-shadow-[0px_1.5px_1.5px_rgba(0,0,0,0.175)] hover:text-accent-two"
+				aria-label="Open search"
+			>
+				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:search-01" />
+			</button>
 			<ThemeToggle />
 			
 			<mobile-button
@@ -281,6 +287,16 @@ import b3LogoDark from "@/assets/images/logo-dark.svg";
 			// Обновляем состояние кнопки
 			toggleNavMenuMobileButton.setAttribute("aria-expanded", (!isOpen).toString());
 		});
+
+		// Mobile search button triggers the shared search dialog
+		const mobileSearchBtn = document.getElementById("mobile-search-trigger");
+		const siteSearch = document.querySelector<HTMLElement>("site-search");
+		if (mobileSearchBtn && siteSearch) {
+			const searchOpenBtn = siteSearch.querySelector<HTMLButtonElement>("button[data-open-modal]");
+			mobileSearchBtn.addEventListener("click", () => {
+				searchOpenBtn?.click();
+			});
+		}
 	});
 </script>
 
