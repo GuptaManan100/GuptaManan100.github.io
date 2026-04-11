@@ -381,11 +381,11 @@
 }
 
 .rating-table .star-rating .star.empty {
-  color: #ddd !important;
+  color: var(--theme-lightest) !important;
 }
 
 .rating-table .star-rating .star.half {
-  background: linear-gradient(90deg, #ffd700 50%, #ddd 50%) !important;
+  background: linear-gradient(90deg, #ffd700 50%, var(--theme-lightest) 50%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -410,7 +410,7 @@
 
 .rating-table td {
   padding: 4px 8px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--theme-color-200);
   vertical-align: middle;
 }
 
@@ -432,8 +432,8 @@
 .spoiler-content {
   margin-top: 15px;
   padding: 20px;
-  background-color: #f8f8f8;
-  border-left: 4px solid #ff6b6b;
+  background-color: var(--theme-color-100);
+  border-left: 4px solid hsl(var(--theme-accent-two));
   border-radius: 4px;
   line-height: 1.6;
 }
@@ -442,7 +442,7 @@
   cursor: pointer;
   padding: 10px 0;
   font-weight: 600;
-  color: #d63384;
+  color: hsl(var(--theme-accent-two));
   border: none;
   background: none;
   text-align: left;
@@ -453,61 +453,28 @@
   text-decoration: underline;
 }
 
-/* Dark mode support for book reviews */
-@media (prefers-color-scheme: dark) {
-  .spoiler-content {
-    background-color: #2d2d2d;
-    border-left-color: #ff7b7b;
-    color: #e0e0e0;
-  }
-  
-  .rating-table td {
-    border-bottom-color: #404040;
-  }
-  
-  .star.empty {
-    color: #666;
-  }
-}
-
 /* Book metadata section */
 .book-metadata {
-  background-color: #f9f9f9;
+  background-color: var(--theme-color-75);
   padding: 15px;
   border-radius: 8px;
   margin: 20px 0;
-  border-left: 4px solid #007acc;
+  border-left: 4px solid hsl(var(--theme-link));
 }
 
 .book-metadata p {
   margin: 4px 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .book-metadata {
-    background-color: #1a1a1a;
-    border-left-color: #4fc3f7;
-    color: #e0e0e0;
-  }
-}
-
 /* Quick tags section */
 .quick-tags {
-  background-color: #f0f7ff;
+  background-color: var(--theme-color-75);
   padding: 15px;
   border-radius: 8px;
   margin: 20px 0;
-  border: 1px solid #e3f2fd;
+  border: 1px solid var(--theme-color-200);
 }
 
 .quick-tags p {
   margin: 8px 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .quick-tags {
-    background-color: #0d1b2a;
-    border-color: #1e3a5f;
-    color: #e0e0e0;
-  }
 }

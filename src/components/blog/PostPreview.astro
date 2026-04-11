@@ -17,7 +17,10 @@ const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | 
 };
 ---
 
-<div class={withDesc ? "flex flex-col" : "flex flex-col grow sm:flex-row sm:items-center sm:justify-between"}>
+<div class={withDesc
+	? "flex flex-col -mx-3 px-3 py-2.5 rounded-lg transition-colors duration-150 hover:bg-[var(--theme-color-75)]"
+	: "flex flex-col grow sm:flex-row sm:items-center sm:justify-between -mx-2 px-2 py-1 rounded-md transition-colors duration-150 hover:bg-[var(--theme-color-75)]"
+}>
 	{!withDesc ? (
 		<>
 			<FormattedDate
@@ -40,8 +43,8 @@ const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | 
 		</>
 	) : (
 		<>
-			<FormattedDate 
-				class="text-sm shrink-0 text-lighter" 
+			<FormattedDate
+				class="text-sm shrink-0 text-lighter"
 				date={post.data.publishDate}
 				dateTimeOptions={{
 					// hour: "2-digit",
@@ -51,12 +54,12 @@ const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | 
 					day: "2-digit",
 				}}
 			/>
-			<Tag class="citrus-link font-medium text-accent-base mt-2.5">
+			<Tag class="citrus-link font-medium text-accent-base mt-2">
 				<a data-astro-prefetch href={getPostUrl(post)}>
 					{post.data.title}
 				</a>
 			</Tag>
-			<p class="mt-0.5 line-clamp-2">{post.data.description}</p>
+			<p class="mt-0.5 line-clamp-2 text-lighter">{post.data.description}</p>
 		</>
 	)}
 </div>
