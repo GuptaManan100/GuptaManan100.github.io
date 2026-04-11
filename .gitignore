@@ -15,6 +15,7 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+.superset/
 
 # Environment variables
 .env
