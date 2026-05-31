@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import Badge from "@/components/Badge.astro";
+import InfinitePostList from "@/components/blog/InfinitePostList.astro";
+import { getUniqueTags } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const MAX_TAGS = 20;
+const allPosts = await getCollection("beats");
+const posts = allPosts.filter((post) => !post.data.draft);
+const uniqueTags = getUniqueTags(posts).slice(0, MAX_TAGS);
+
+const meta = {
+	description: "Personal stories, guitar riffs & reflections from the road",
+	title: "Beats",
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6 flex items-center gap-2">
+		<span class="bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent">
+			Beats
+		</span>
+		<span class="text-textColor/60 text-lg">• Stories & Strings</span>
+	</h1>
+	<div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
+		<InfinitePostList posts={posts} ariaLabel="Music blog post list" />
+		{
+			!!uniqueTags.length && (
+				<aside class="md:min-w-[14rem] md:max-w-[14rem] md:basis-[14rem]">
+					<h4 class="title mb-4 flex gap-2">Tags</h4>
+					<ul class="flex flex-wrap gap-2">
+						{uniqueTags.map((tag) => (
+							<li>
+								<a aria-label={`View all music posts with the tag: ${tag}`} href={`/tags/${tag}`}>
+									<Badge variant="muted" title={tag} />
+								</a>
+							</li>
+						))}
+
+						<span class="text-base ms-auto inline-flex items-center h-6 sm:text-end">
+							<a
+								aria-label="View all blog categories"
+								class="font-medium text-accent sm:hover:text-accent-two"
+								href="/tags/"
+							>
+								View all →
+							</a>
+						</span>
+					</ul>
+				</aside>
+			)
+		}
+	</div>
+</PageLayout>

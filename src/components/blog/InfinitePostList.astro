@@ -1,0 +1,117 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostPreview from "@/components/blog/PostPreview.astro";
+import { groupPostsByYear } from "@/data/post";
+import { collectionDateSort } from "@/utils/date";
+
+type Post = CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
+
+interface Props {
+	posts: Post[];
+	ariaLabel: string;
+	/** How many posts are visible initially and revealed per scroll batch. */
+	batch?: number;
+}
+
+const { posts, ariaLabel, batch = 8 } = Astro.props;
+
+const sorted = [...posts].sort(collectionDateSort);
+const groupedByYear = groupPostsByYear(sorted);
+const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
+
+// Assign a running index across every post (spanning year groups) so the client
+// can reveal them in order. Each year divider records the index of its first post.
+let runningIndex = 0;
+const yearBlocks = descYearKeys.map((year) => {
+	const firstIndex = runningIndex;
+	const items = (groupedByYear[year] ?? []).map((post) => ({ post, index: runningIndex++ }));
+	return { year, firstIndex, items };
+});
+const total = runningIndex;
+const hasMore = total > batch;
+---
+
+<section aria-label={ariaLabel} class="grow">
+	<div id="post-list" data-batch={batch}>
+		{
+			yearBlocks.map((block) => (
+				<>
+					<h4 class="flex items-center gap-3 mb-4" data-reveal-divider={block.firstIndex}>
+						<span class="font-semibold text-sm px-2.5 py-0.5 rounded-full bg-accent-base/10 text-accent-base">
+							{block.year}
+						</span>
+						<span class="flex-1 h-px bg-[var(--theme-color-200)]" />
+					</h4>
+					<ul class="mb-8 space-y-5 text-start">
+						{block.items.map((item) => (
+							<li data-reveal-item={item.index}>
+								<PostPreview post={item.post} withDesc={true} />
+							</li>
+						))}
+					</ul>
+				</>
+			))
+		}
+	</div>
+	{
+		hasMore && (
+			<div id="scroll-sentinel" class="flex justify-center py-6" aria-hidden="true">
+				<div class="flex gap-1.5">
+					<span class="size-2 rounded-full bg-accent-base/60 animate-pulse" />
+					<span class="size-2 rounded-full bg-accent-base/60 animate-pulse [animation-delay:150ms]" />
+					<span class="size-2 rounded-full bg-accent-base/60 animate-pulse [animation-delay:300ms]" />
+				</div>
+			</div>
+		)
+	}
+</section>
+
+<script is:inline>
+	(function () {
+		const list = document.getElementById("post-list");
+		if (!list) return;
+		const sentinel = document.getElementById("scroll-sentinel");
+		const items = Array.from(list.querySelectorAll("[data-reveal-item]"));
+		const dividers = Array.from(list.querySelectorAll("[data-reveal-divider]"));
+		const batch = parseInt(list.dataset.batch || "8", 10);
+		const total = items.length;
+
+		// No JS-driven reveal needed (or possible): leave everything visible.
+		if (!("IntersectionObserver" in window) || total <= batch) {
+			if (sentinel) sentinel.remove();
+			return;
+		}
+
+		let revealed = batch;
+		let observer;
+
+		function apply() {
+			for (const el of items) {
+				el.classList.toggle("hidden", parseInt(el.dataset.revealItem, 10) >= revealed);
+			}
+			for (const el of dividers) {
+				el.classList.toggle("hidden", parseInt(el.dataset.revealDivider, 10) >= revealed);
+			}
+			if (revealed >= total) {
+				if (observer) observer.disconnect();
+				if (sentinel) sentinel.remove();
+			}
+		}
+
+		observer = new IntersectionObserver(
+			function (entries) {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						revealed += batch;
+						apply();
+					}
+				}
+			},
+			{ rootMargin: "300px 0px" },
+		);
+
+		// Hide everything past the first batch synchronously, then watch the sentinel.
+		apply();
+		if (sentinel) observer.observe(sentinel);
+	})();
+</script>
