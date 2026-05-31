@@ -4,6 +4,7 @@ description: "Brynn Kelly"
 publishDate: "2026-03-17"
 tags: ["fiction", "romance", "mystery", "romantic-suspense", "brynn-kelly"]
 weight: 1
+rating: 3
 ---
 
 # 📚 [*A Murder to Remember*](https://www.goodreads.com/book/show/247026047-a-murder-to-remember)

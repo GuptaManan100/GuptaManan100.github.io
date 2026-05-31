@@ -4,6 +4,7 @@ description: "Marcus Aurelius"
 publishDate: "2026-02-22"
 tags: ["non-fiction", "philosophy", "stoicism", "classics", "marcus-aurelius", "self-help"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [*Meditations*](https://www.goodreads.com/book/show/30659.Meditations)

@@ -4,6 +4,7 @@ description: "Ali Hazelwood"
 publishDate: "2026-05-11"
 tags: ["fiction", "romance", "paranormal-romance", "fantasy", "vampires", "werewolves", "ali-hazelwood"]
 weight: 1
+rating: 1
 ---
 
 # 📚 [*Bride*](https://www.goodreads.com/book/show/181344829-bride)

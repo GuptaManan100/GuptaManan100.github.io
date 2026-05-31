@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content";
+import InfinitePostList from "@/components/blog/InfinitePostList.astro";
+import { getAllPosts, getUniqueTags } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+import { collectionDateSort } from "@/utils/date";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const allPosts = await getAllPosts();
+	const sortedPosts = allPosts.sort(collectionDateSort);
+	const uniqueTags = getUniqueTags(sortedPosts);
+
+	return uniqueTags.map((tag) => ({
+		params: { tag },
+		props: { posts: sortedPosts.filter((post) => post.data.tags.includes(tag)) },
+	}));
+};
+
+type Post = CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
+
+interface Props {
+	posts: Post[];
+}
+
+const { posts } = Astro.props;
+const { tag } = Astro.params;
+
+const meta = {
+	description: `View all posts with the tag - ${tag}`,
+	title: `Tag: ${tag}`,
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6 flex items-center">
+		<a class="text-accent-two sm:hover:underline" href="/tags/">Tags</a>
+		<span class="me-3 ms-2">→</span>
+		<span class="text-2xl">#{tag}</span>
+	</h1>
+	<InfinitePostList posts={posts} ariaLabel={`Posts tagged ${tag}`} />
+</PageLayout>

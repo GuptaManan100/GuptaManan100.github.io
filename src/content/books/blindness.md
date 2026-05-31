@@ -13,6 +13,7 @@ tags:
     "jose-saramago",
   ]
 weight: 1
+rating: 4
 ---
 
 # 📚 [_Blindness_](https://www.goodreads.com/book/show/40495148-blindness)

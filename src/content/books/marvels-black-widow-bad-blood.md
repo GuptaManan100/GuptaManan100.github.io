@@ -14,6 +14,7 @@ tags:
     "mikki-kendall",
   ]
 weight: 1
+rating: 2.5
 ---
 
 # 📚 [_Marvel's Black Widow: Bad Blood_](https://www.goodreads.com/book/show/53247222-marvel-s-black-widow)

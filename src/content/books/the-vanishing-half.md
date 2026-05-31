@@ -4,6 +4,7 @@ description: "Brit Bennett"
 publishDate: "2025-07-10"
 tags: ["historical-fiction", "race", "identity", "family", "secrets", "twins", "brit-bennett", "literary-fiction"]
 weight: 1
+rating: 4.5
 ---
 
 # 📚 [*The Vanishing Half*](https://www.goodreads.com/book/show/51791252-the-vanishing-half)

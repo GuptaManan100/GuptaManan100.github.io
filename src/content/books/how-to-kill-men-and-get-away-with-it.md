@@ -4,6 +4,7 @@ description: "Katy Brent"
 publishDate: "2026-02-26"
 tags: ["fiction", "thriller", "mystery", "crime", "katy-brent"]
 weight: 1
+rating: 2
 ---
 
 # 📚 [*How to Kill Men and Get Away With It*](https://www.goodreads.com/book/show/61833058-how-to-kill-men-and-get-away-with-it)

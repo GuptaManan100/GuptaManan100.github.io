@@ -4,6 +4,7 @@ description: "Asako Yuzuki"
 publishDate: "2026-03-07"
 tags: ["fiction", "mystery", "japanese-literature", "feminist", "asako-yuzuki"]
 weight: 1
+rating: 3
 ---
 
 # 📚 [*Butter*](https://www.goodreads.com/book/show/200776812-butter)

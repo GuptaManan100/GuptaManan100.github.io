@@ -4,6 +4,7 @@ description: "Mallory Arnold"
 publishDate: "2026-05-31"
 tags: ["fiction", "thriller", "mystery", "horror", "gothic", "mallory-arnold"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [_How to Survive a Horror Story_](https://www.goodreads.com/book/show/219542927-how-to-survive-a-horror-story)

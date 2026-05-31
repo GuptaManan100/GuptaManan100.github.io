@@ -99,6 +99,8 @@ export default {
         // Add any custom fonts here
         sans: ["SFProRounded", ...fontFamily.sans],
         serif: ["CascadiaCode", ...fontFamily.serif],
+        // Editorial display serif for titles & article headings
+        display: ["Fraunces Variable", "Georgia", ...fontFamily.serif],
       },
       transitionProperty: {
         height: "height",

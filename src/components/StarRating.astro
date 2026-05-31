@@ -1,0 +1,38 @@
+---
+interface Props {
+	/** 0–5, halves allowed. */
+	rating: number;
+	class?: string;
+}
+
+const { rating, class: className = "" } = Astro.props;
+
+// Per-star fill: 1 = full, 0.5 = half, 0 = empty.
+const stars = Array.from({ length: 5 }, (_, i) => Math.max(0, Math.min(1, rating - i)));
+---
+
+<span
+	class={`inline-flex items-center gap-px text-[0.8em] leading-none ${className}`}
+	role="img"
+	aria-label={`Rated ${rating} out of 5 stars`}
+	title={`${rating} / 5`}
+>
+	{
+		stars.map((fill) => (
+			<span class="relative inline-block">
+				<span class="text-color-300">★</span>
+				{fill > 0 && (
+					<span
+						class:list={[
+							"absolute inset-0 overflow-hidden text-[#f5b301]",
+							fill === 0.5 ? "w-1/2" : "w-full",
+						]}
+						aria-hidden="true"
+					>
+						★
+					</span>
+				)}
+			</span>
+		))
+	}
+</span>

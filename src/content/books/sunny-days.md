@@ -4,6 +4,7 @@ description: "Sunil Gavaskar"
 publishDate: "2026-05-31"
 tags: ["non-fiction", "memoir", "autobiography", "sports", "cricket", "sunil-gavaskar"]
 weight: 1
+rating: 2
 ---
 
 # 📚 [*Sunny Days: Sunil Gavaskar's Own Story*](https://www.goodreads.com/book/show/199570895-sunny-days)

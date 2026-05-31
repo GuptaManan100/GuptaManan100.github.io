@@ -4,6 +4,7 @@ description: "qntm"
 publishDate: "2026-03-07"
 tags: ["fiction", "science-fiction", "horror", "scp", "qntm"]
 weight: 1
+rating: 5
 ---
 
 # 📚 [*There Is No Antimemetics Division*](https://www.goodreads.com/book/show/223469227-there-is-no-antimemetics-division)

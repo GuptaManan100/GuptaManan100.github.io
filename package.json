@@ -19,6 +19,7 @@
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "5.1.4",
+    "@fontsource-variable/fraunces": "^5.2.9",
     "@shikijs/transformers": "^1.25.1",
     "astro": "5.1.2",
     "astro-icon": "^1.1.5",
@@ -60,6 +61,10 @@
     "typescript": "^5.7.2"
   },
   "pnpm": {
-		"onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "sharp"]
-	}
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild",
+      "sharp"
+    ]
+  }
 }

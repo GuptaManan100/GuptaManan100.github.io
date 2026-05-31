@@ -4,6 +4,7 @@ description: "Alice Feeney"
 publishDate: "2026-04-16"
 tags: ["fiction", "thriller", "mystery", "suspense", "psychological-thriller", "alice-feeney"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [*My Husband's Wife*](https://www.goodreads.com/book/show/231127462-my-husband-s-wife)

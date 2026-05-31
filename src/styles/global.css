@@ -94,8 +94,8 @@
 		--bg-brightness: 96%; /* Ярксть фона, 100% - абсолюнто белый */
 
 		/* Акценты */
-		--theme-accent-base: var(--bg-hue) 53% 27%; /* Основной акцентный цвет */
-		--theme-accent-one: var(--bg-hue) 53% 27%; /* Первый дополнительный акцентный цвет */
+		--theme-accent-base: var(--bg-hue) 53% 27%; /* Основной акцентный цвет (текст заголовков - держим тёмным для контраста) */
+		--theme-accent-one: 200deg 74% 38%; /* Первый дополнительный акцентный цвет - яркий океанский синий для градиентов/кнопок (был навязчиво тёмный navy) */
 		--theme-accent-two: 351deg 66% 48%; /* Второй дополнительный акцентный цвет */
 		
 		/* Вариант */ /* --theme-accent-two: 344deg 63% 45%; */
@@ -230,6 +230,16 @@
 
 	html {
 		letter-spacing: 0.025em;
+	}
+
+	/* Editorial display serif (Fraunces) for big titles & article headings.
+	   Scoped to h1.title (page & post titles) and prose headings so UI labels
+	   like the sidebar "Tags" / "Table of Contents" (h4.title) stay in the sans. */
+	h1.title,
+	.prose :is(h1, h2, h3) {
+		font-family: theme("fontFamily.display");
+		font-optical-sizing: auto;
+		letter-spacing: 0.01em;
 	}
 
 	h1 {

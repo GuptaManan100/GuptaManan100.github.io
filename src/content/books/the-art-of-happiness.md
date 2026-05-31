@@ -4,6 +4,7 @@ description: "Dalai Lama & Howard C. Cutler"
 publishDate: "2026-04-16"
 tags: ["non-fiction", "self-help", "philosophy", "spirituality", "buddhism", "dalai-lama", "howard-cutler"]
 weight: 1
+rating: 5
 ---
 
 # 📚 [*The Art of Happiness: A Handbook for Living*](https://www.goodreads.com/book/show/38210.The_Art_of_Happiness)

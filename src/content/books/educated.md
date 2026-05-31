@@ -4,6 +4,7 @@ description: "Tara Westover"
 publishDate: "2025-07-11"
 tags: ["memoir", "education", "family", "abuse", "survival", "tara-westover", "non-fiction"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [*Educated*](https://www.goodreads.com/book/show/35133922-educated)

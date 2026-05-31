@@ -4,6 +4,7 @@ description: "Anthony Warner"
 publishDate: "2026-02-22"
 tags: ["non-fiction", "food", "science", "sustainability", "environment", "anthony-warner"]
 weight: 1
+rating: 5
 ---
 
 # 📚 [*Ending Hunger: The Quest to Feed the World Without Destroying It*](https://www.goodreads.com/book/show/54303464-ending-hunger)

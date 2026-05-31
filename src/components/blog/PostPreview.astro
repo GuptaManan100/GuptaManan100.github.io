@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
+import StarRating from "@/components/StarRating.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
@@ -43,17 +44,20 @@ const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | 
 		</>
 	) : (
 		<>
-			<FormattedDate
-				class="text-sm shrink-0 text-lighter"
-				date={post.data.publishDate}
-				dateTimeOptions={{
-					// hour: "2-digit",
-					// minute: "2-digit",
-					year: "numeric",
-					month: "long",
-					day: "2-digit",
-				}}
-			/>
+			<div class="flex items-center justify-between gap-3">
+				<FormattedDate
+					class="text-sm shrink-0 text-lighter"
+					date={post.data.publishDate}
+					dateTimeOptions={{
+						year: "numeric",
+						month: "long",
+						day: "2-digit",
+					}}
+				/>
+				{post.collection === "books" && typeof post.data.rating === "number" && (
+					<StarRating rating={post.data.rating} class="shrink-0" />
+				)}
+			</div>
 			<Tag class="citrus-link font-medium text-accent-base mt-2">
 				<a data-astro-prefetch href={getPostUrl(post)}>
 					{post.data.title}

@@ -66,6 +66,27 @@ const hasMore = total > batch;
 	}
 </section>
 
+<style>
+	@keyframes reveal-fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(14px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	.reveal-anim {
+		animation: reveal-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.reveal-anim {
+			animation: none;
+		}
+	}
+</style>
+
 <script is:inline>
 	(function () {
 		const list = document.getElementById("post-list");
@@ -76,22 +97,36 @@ const hasMore = total > batch;
 		const batch = parseInt(list.dataset.batch || "8", 10);
 		const total = items.length;
 
-		// No JS-driven reveal needed (or possible): leave everything visible.
+		// No JS-driven reveal needed (or possible): leave everything visible, unanimated.
 		if (!("IntersectionObserver" in window) || total <= batch) {
 			if (sentinel) sentinel.remove();
 			return;
 		}
 
-		let revealed = batch;
+		// Hide everything past the first batch up front so the sentinel sits just
+		// below the visible items (and so the first batch can be animated in too).
+		for (let i = batch; i < total; i++) items[i].classList.add("hidden");
+
+		let revealed = 0;
 		let observer;
 
-		function apply() {
-			for (const el of items) {
-				el.classList.toggle("hidden", parseInt(el.dataset.revealItem, 10) >= revealed);
-			}
+		function syncDividers() {
 			for (const el of dividers) {
 				el.classList.toggle("hidden", parseInt(el.dataset.revealDivider, 10) >= revealed);
 			}
+		}
+
+		// Reveal up to `target` items, fading in each newly-shown item with a stagger.
+		function revealUpTo(target) {
+			const end = Math.min(target, total);
+			for (let i = revealed; i < end; i++) {
+				const el = items[i];
+				el.classList.remove("hidden");
+				el.style.animationDelay = (i - revealed) * 55 + "ms";
+				el.classList.add("reveal-anim");
+			}
+			revealed = end;
+			syncDividers();
 			if (revealed >= total) {
 				if (observer) observer.disconnect();
 				if (sentinel) sentinel.remove();
@@ -101,17 +136,14 @@ const hasMore = total > batch;
 		observer = new IntersectionObserver(
 			function (entries) {
 				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						revealed += batch;
-						apply();
-					}
+					if (entry.isIntersecting) revealUpTo(revealed + batch);
 				}
 			},
 			{ rootMargin: "300px 0px" },
 		);
 
-		// Hide everything past the first batch synchronously, then watch the sentinel.
-		apply();
+		// Animate the first batch in on load, then watch the sentinel for the rest.
+		revealUpTo(batch);
 		if (sentinel) observer.observe(sentinel);
 	})();
 </script>

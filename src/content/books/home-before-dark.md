@@ -4,6 +4,7 @@ description: "Riley Sager"
 publishDate: "2026-02-26"
 tags: ["thriller", "mystery", "horror", "suspense", "riley-sager"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [*Home Before Dark*](https://www.goodreads.com/book/show/50833559-home-before-dark)

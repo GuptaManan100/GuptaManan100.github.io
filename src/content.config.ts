@@ -32,6 +32,8 @@ const postSchema = ({ image }: { image: any }) =>
 		seriesId: z.string().optional(),
 		orderInSeries: z.number().optional(),
 		weight: z.number().optional(),
+		// Overall star rating (0–5, halves allowed). Used on book listing rows.
+		rating: z.number().min(0).max(5).optional(),
 	});
 
 

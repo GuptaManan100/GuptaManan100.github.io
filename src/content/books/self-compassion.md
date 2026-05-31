@@ -4,6 +4,7 @@ description: "Kristin Neff"
 publishDate: "2026-03-26"
 tags: ["non-fiction", "self-help", "psychology", "mindfulness", "personal-development", "kristin-neff"]
 weight: 1
+rating: 4
 ---
 
 # 📚 [*Self-Compassion: Stop Beating Yourself Up and Leave Insecurity Behind*](https://www.goodreads.com/book/show/11743231-self-compassion)

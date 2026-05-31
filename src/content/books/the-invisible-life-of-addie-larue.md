@@ -4,6 +4,7 @@ description: "V. E. Schwab"
 publishDate: "2025-06-13"
 tags: ["fantasy", "romance", "historical-fiction", "ve-schwab", "contemporary-fantasy", "magical-realism"]
 weight: 1
+rating: 2.5
 ---
 
 # 📚 [*The Invisible Life of Addie LaRue*](https://www.goodreads.com/book/show/50623864-the-invisible-life-of-addie-larue)
