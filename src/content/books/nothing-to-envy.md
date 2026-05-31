@@ -5,6 +5,7 @@ publishDate: "2026-02-22"
 tags: ["non-fiction", "north-korea", "history", "politics", "journalism", "barbara-demick"]
 weight: 1
 rating: 5
+cover: ../../assets/book-covers/nothing-to-envy.jpg
 ---
 
 # 📚 [*Nothing to Envy: Ordinary Lives in North Korea*](https://www.goodreads.com/book/show/40604846-nothing-to-envy)

@@ -5,6 +5,7 @@ publishDate: "2026-02-26"
 tags: ["thriller", "mystery", "horror", "suspense", "riley-sager"]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/home-before-dark.jpg
 ---
 
 # 📚 [*Home Before Dark*](https://www.goodreads.com/book/show/50833559-home-before-dark)

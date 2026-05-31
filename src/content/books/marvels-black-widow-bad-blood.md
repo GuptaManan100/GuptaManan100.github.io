@@ -15,6 +15,7 @@ tags:
   ]
 weight: 1
 rating: 2.5
+cover: ../../assets/book-covers/marvels-black-widow-bad-blood.jpg
 ---
 
 # 📚 [_Marvel's Black Widow: Bad Blood_](https://www.goodreads.com/book/show/53247222-marvel-s-black-widow)

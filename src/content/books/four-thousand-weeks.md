@@ -5,6 +5,7 @@ publishDate: "2026-02-22"
 tags: ["non-fiction", "self-help", "productivity", "philosophy", "time-management", "oliver-burkeman"]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/four-thousand-weeks.jpg
 ---
 
 # 📚 [*Four Thousand Weeks: Time Management for Mortals*](https://www.goodreads.com/book/show/54785515-four-thousand-weeks)

@@ -5,6 +5,7 @@ publishDate: "2026-02-24"
 tags: ["fiction", "thriller", "mystery", "suspense", "freida-mcfadden", "the-housemaid-series"]
 weight: 1
 rating: 5
+cover: ../../assets/book-covers/the-housemaid-is-watching.jpg
 ---
 
 # 📚 [*The Housemaid is Watching*](https://www.goodreads.com/book/show/199235727-the-housemaid-is-watching)

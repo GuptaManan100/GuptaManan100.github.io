@@ -5,6 +5,7 @@ publishDate: "2026-04-16"
 tags: ["fiction", "literary-fiction", "contemporary", "friendship", "gabrielle-zevin"]
 weight: 1
 rating: 5
+cover: ../../assets/book-covers/tomorrow-and-tomorrow-and-tomorrow.jpg
 ---
 
 # 📚 [*Tomorrow, and Tomorrow, and Tomorrow*](https://www.goodreads.com/book/show/58784475-tomorrow-and-tomorrow-and-tomorrow)

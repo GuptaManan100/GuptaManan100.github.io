@@ -5,6 +5,7 @@ publishDate: "2026-02-23"
 tags: ["fiction", "fantasy", "mystery", "philosophy", "identity", "susanna-clarke"]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/piranesi.jpg
 ---
 
 # 📚 [*Piranesi*](https://www.goodreads.com/book/show/50202953-piranesi)

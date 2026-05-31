@@ -18,6 +18,8 @@ const postSchema = ({ image }: { image: any }) =>
 				src: image(),
 			})
 			.optional(),
+		// Book cover (self-hosted, optimized at build). Used on book review pages.
+		cover: image().optional(),
 		draft: z.boolean().default(false),
 		ogImage: z.string().optional(),
 		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),

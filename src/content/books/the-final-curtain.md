@@ -5,6 +5,7 @@ publishDate: "2025-06-12"
 tags: ["mystery", "detective", "keigo-higashino", "japanese-literature", "thriller", "crime"]
 weight: 1
 rating: 4.5
+cover: ../../assets/book-covers/the-final-curtain.jpg
 ---
 
 # 📚 [*The Final Curtain*](https://www.goodreads.com/book/show/65213104-the-final-curtain)

@@ -5,6 +5,7 @@ publishDate: "2026-02-22"
 tags: ["non-fiction", "psychology", "philosophy", "self-help", "luke-burgis", "mimetic-desire"]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/wanting.jpg
 ---
 
 # 📚 [*Wanting: The Power of Mimetic Desire in Everyday Life*](https://www.goodreads.com/book/show/222376832-wanting)

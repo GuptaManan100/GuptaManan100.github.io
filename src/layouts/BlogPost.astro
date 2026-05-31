@@ -6,6 +6,7 @@ import SeriesNavigation from "@/components/blog/SeriesNavigation.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import BaseLayout from "./Base.astro";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 interface Props {
 	post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
@@ -72,6 +73,15 @@ const { headings } = await render(post);
 	<div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
 		<article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
 			<div class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two sm:prose-headings:before:content-['#'] sm:prose-th:before:content-none">
+				{post.collection === "books" && post.data.cover && (
+					<Image
+						src={post.data.cover}
+						alt={`${post.data.title} book cover`}
+						widths={[208, 416]}
+						sizes="(min-width: 640px) 13rem, 10rem"
+						class="not-prose mx-auto mb-5 block w-40 rounded-lg shadow-xl ring-1 ring-black/10 sm:float-right sm:mb-3 sm:ml-6 sm:mt-1 sm:w-44 md:w-52"
+					/>
+				)}
 				<slot />
 			</div>
 			<WebMentions />

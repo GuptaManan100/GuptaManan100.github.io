@@ -5,6 +5,7 @@ publishDate: "2026-04-11"
 tags: ["fiction", "science-fiction", "climate-fiction", "speculative-fiction", "kim-stanley-robinson"]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/the-ministry-for-the-future.jpg
 ---
 
 # 📚 [*The Ministry for the Future*](https://www.goodreads.com/book/show/50998056-the-ministry-for-the-future)

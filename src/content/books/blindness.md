@@ -14,6 +14,7 @@ tags:
   ]
 weight: 1
 rating: 4
+cover: ../../assets/book-covers/blindness.jpg
 ---
 
 # 📚 [_Blindness_](https://www.goodreads.com/book/show/40495148-blindness)
