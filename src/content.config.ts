@@ -23,10 +23,18 @@ const postSchema = ({ image }: { image: any }) =>
 		draft: z.boolean().default(false),
 		ogImage: z.string().optional(),
 		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		// Date shown on the post and used for sorting (e.g. when it was originally written).
 		publishDate: z
 			.string()
 			.or(z.date())
 			.transform((val) => new Date(val)),
+		// Optional date the post actually goes live on the site. Defaults to publishDate.
+		// Use this to display an earlier date (e.g. a cross-post's original date) while
+		// keeping the post hidden until later.
+		liveDate: z
+			.string()
+			.optional()
+			.transform((str) => (str ? new Date(str) : undefined)),
 		updatedDate: z
 			.string()
 			.optional()

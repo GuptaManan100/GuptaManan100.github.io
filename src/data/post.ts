@@ -2,14 +2,28 @@ import { type CollectionEntry, getCollection } from "astro:content";
 
 type B3CollectionEntry = CollectionEntry<"bytes"> | CollectionEntry<"beats"> | CollectionEntry<"books">;
 
-/** filter out draft posts from all B³ collections based on the environment */
+/** whether a post should be publicly listed.
+ *  In production, hides drafts and posts scheduled for the future (scheduled posts);
+ *  in dev, everything is shown so unpublished/scheduled content can be previewed.
+ *  Scheduling is gated on liveDate when set, otherwise publishDate — so a post can
+ *  display an earlier publishDate while staying hidden until its liveDate.
+ */
+export function isPublic({ data }: { data: B3CollectionEntry["data"] }): boolean {
+	if (!import.meta.env.PROD) return true;
+	if (data.draft) return false;
+	const liveDate = data.liveDate ?? data.publishDate;
+	if (liveDate.getTime() > Date.now()) return false;
+	return true;
+}
+
+/** filter out draft and future-dated posts from all B³ collections based on the environment */
 export async function getAllPosts(): Promise<B3CollectionEntry[]> {
 	const [bytes, beats, books] = await Promise.all([
-		getCollection("bytes", ({ data }) => import.meta.env.PROD ? !data.draft : true),
-		getCollection("beats", ({ data }) => import.meta.env.PROD ? !data.draft : true),
-		getCollection("books", ({ data }) => import.meta.env.PROD ? !data.draft : true)
+		getCollection("bytes", isPublic),
+		getCollection("beats", isPublic),
+		getCollection("books", isPublic)
 	]);
-	
+
 	return [...bytes, ...beats, ...books];
 }
 
