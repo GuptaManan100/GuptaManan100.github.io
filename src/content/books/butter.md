@@ -17,7 +17,7 @@ cover: ../../assets/book-covers/butter.jpg
 
 ## 💭 Quick Summary & Thoughts
 
-This was a good book. Nowhere close to the best I've read, but a genuinely unique read. There are a few topics the book touches upon that I found quite fascinating, and it's those broader themes that make it worth picking up.
+Unique is the first word that comes to mind with this one. Nowhere close to the best I've read, but genuinely unlike anything else I've picked up. There are a few topics the book touches upon that I found quite fascinating, and it's those broader themes that make it worth picking up.
 
 The book dives deep into the incredibly harsh expectations placed on Japanese women to look a certain way. Putting on even a little bit of weight causes such extreme reactions from everyone around you, and that pressure shapes how women see food in Japan. Manako Kajii, however, is the exact opposite. She's comfortable in her own skin, loves to eat rich food, and of course, butter. Quite ironically, all the lavish food descriptions in the book actually killed *my* appetite, that's the kind of food I would almost never have. So many calories, just the thought sends shudders.
 

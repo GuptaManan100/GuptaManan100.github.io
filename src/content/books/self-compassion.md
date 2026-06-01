@@ -17,7 +17,7 @@ cover: ../../assets/book-covers/self-compassion.jpg
 
 ## 💭 Quick Summary & Thoughts
 
-This was a wonderful book - but one that needs to be read under the right circumstances. I picked it up at a time when I was struggling with a few things in my life, and it genuinely helped me work through them. If I'd read it at a different point, I don't think it would have landed the same way. Timing matters with books like this.
+Some books only land if you read them at the right moment, and this is one of them. It's a wonderful book, but I happened to pick it up at a time when I was struggling with a few things in my life, and it genuinely helped me work through them. If I'd read it at a different point, I don't think it would have landed the same way. Timing matters with books like this.
 
 The core idea is simple: treat yourself with the same kindness you'd offer a friend. And that first chapter where Neff asks you to think about how you'd respond to a friend going through the same situation you're in - that hit me hard. I realized just how different my inner dialogue is compared to how I'd actually talk to someone I care about. If a friend came to me with the same struggles, I'd be understanding, patient, supportive. But with myself? Harsh, critical, demanding more. That gap was eye-opening.
 

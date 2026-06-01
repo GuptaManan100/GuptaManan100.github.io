@@ -17,7 +17,7 @@ cover: ../../assets/book-covers/home-before-dark.jpg
 
 ## 💭 Quick Summary & Thoughts
 
-This was a good book. Not a great one, but a good one. Riley Sager knows how to keep a story moving, and I have to give credit where it's due, the pacing here is excellent. There's never a dull stretch where you feel like you're wading through filler. Every chapter pushes things forward, and the dual timeline structure between Maggie's present and her father's account of what happened twenty-five years ago works really well to keep you hooked.
+Riley Sager knows how to keep a story moving, and I have to give credit where it's due - the pacing here is excellent. Not a great book, but a thoroughly good one. There's never a dull stretch where you feel like you're wading through filler. Every chapter pushes things forward, and the dual timeline structure between Maggie's present and her father's account of what happened twenty-five years ago works really well to keep you hooked.
 
 From pretty early on, it was clear that the parents were hiding something. There was no way the ghosts were real - the story was obviously pointing towards something more sinister and grounded. And that's fine, that's the kind of thriller this is. The fun is supposed to be in figuring out *what* they were hiding, not *whether* they were hiding something.
 
