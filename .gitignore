@@ -24,3 +24,6 @@ Thumbs.db
 
 # Private content
 src/content/private-books/
+
+# Book club discussion guides (generated)
+book-club-guides/
