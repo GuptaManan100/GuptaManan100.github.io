@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import StarRating from "@/components/StarRating.astro";
+import { Icon } from "astro-icon/components";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
@@ -56,6 +57,12 @@ const getPostUrl = (post: CollectionEntry<"bytes"> | CollectionEntry<"beats"> | 
 				/>
 				{post.collection === "books" && typeof post.data.rating === "number" && (
 					<StarRating rating={post.data.rating} class="shrink-0" />
+				)}
+				{post.data.talk && (
+					<span class="flex shrink-0 items-center gap-1 rounded-md bg-accent-two/10 px-2 py-0.5 text-xs font-medium text-accent-two">
+						<Icon aria-hidden="true" class="h-3.5 w-3.5" focusable="false" name="solar:play-circle-bold" />
+						Talk
+					</span>
 				)}
 			</div>
 			<Tag class="citrus-link font-medium text-accent-base mt-2">

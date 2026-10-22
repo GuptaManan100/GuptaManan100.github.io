@@ -1,0 +1,64 @@
+---
+// Click-to-load YouTube player: renders only a thumbnail until clicked, so pages
+// don't pull YouTube's player JS (and its cookies) on every visit.
+interface Props {
+	id: string;
+	/** Seconds into the video to start playback. */
+	start?: number;
+	title: string;
+}
+
+const { id, start, title } = Astro.props;
+---
+
+<div class="not-prose relative mb-4 aspect-video w-full overflow-hidden rounded-lg bg-black shadow-xl ring-1 ring-black/10">
+	<button
+		type="button"
+		class="youtube-facade group absolute inset-0 h-full w-full cursor-pointer"
+		data-youtube-id={id}
+		data-youtube-start={start}
+		data-youtube-title={title}
+		aria-label={`Play video: ${title}`}
+	>
+		<img
+			src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+			alt=""
+			loading="lazy"
+			decoding="async"
+			class="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+		/>
+		<span
+			class="absolute left-1/2 top-1/2 flex h-12 w-[4.25rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl bg-[#212121]/80 transition-colors group-hover:bg-[#ff0000]"
+			aria-hidden="true"
+		>
+			<svg viewBox="0 0 24 24" class="ml-1 h-6 w-6 fill-white"><path d="M8 5v14l11-7z"></path></svg>
+		</span>
+	</button>
+	<noscript>
+		<a
+			href={`https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ""}`}
+			class="absolute inset-0 flex items-end p-3 text-sm font-medium text-white underline"
+		>
+			Watch on YouTube
+		</a>
+	</noscript>
+</div>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>(".youtube-facade").forEach((button) => {
+		button.addEventListener(
+			"click",
+			() => {
+				const iframe = document.createElement("iframe");
+				const start = button.dataset.youtubeStart ? `&start=${button.dataset.youtubeStart}` : "";
+				iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.youtubeId}?autoplay=1${start}`;
+				iframe.title = button.dataset.youtubeTitle ?? "YouTube video";
+				iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+				iframe.allowFullscreen = true;
+				iframe.className = "absolute inset-0 h-full w-full";
+				button.replaceWith(iframe);
+			},
+			{ once: true },
+		);
+	});
+</script>

@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+
+// Action row shown under a talk's video: the slide deck (when there is one) and
+// a link out to YouTube.
+interface Props {
+	youtube: { id: string; start?: number };
+	slides?: string;
+}
+
+const { youtube, slides } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${youtube.id}${youtube.start ? `&t=${youtube.start}s` : ""}`;
+---
+
+<div class="not-prose mb-8 flex flex-wrap gap-3">
+	{
+		slides && (
+			<a
+				href={slides}
+				target="_blank"
+				rel="noopener"
+				class="inline-flex items-center gap-2 rounded-lg bg-accent-base px-4 py-2 text-sm font-semibold text-bgColor shadow-md transition hover:brightness-110"
+			>
+				<Icon aria-hidden="true" class="h-5 w-5" focusable="false" name="solar:presentation-graph-bold" />
+				View slides
+				<span class="rounded bg-bgColor/20 px-1.5 text-xs font-medium">PDF</span>
+			</a>
+		)
+	}
+	<a
+		href={watchUrl}
+		target="_blank"
+		rel="noopener"
+		class="inline-flex items-center gap-2 rounded-lg border border-accent-base/40 px-4 py-2 text-sm font-semibold text-accent-base transition hover:bg-accent-base/10"
+	>
+		<Icon aria-hidden="true" class="h-5 w-5" focusable="false" name="solar:play-circle-bold" />
+		Watch on YouTube
+	</a>
+</div>

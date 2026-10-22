@@ -3,6 +3,8 @@ import { type CollectionEntry, render } from "astro:content";
 import Masthead from "@/components/blog/Masthead.astro";
 import TOC from "@/components/blog/TOC.astro";
 import SeriesNavigation from "@/components/blog/SeriesNavigation.astro";
+import TalkLinks from "@/components/blog/TalkLinks.astro";
+import YouTubeEmbed from "@/components/blog/YouTubeEmbed.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import BaseLayout from "./Base.astro";
 import { Icon } from "astro-icon/components";
@@ -81,6 +83,12 @@ const { headings } = await render(post);
 						sizes="(min-width: 640px) 13rem, 10rem"
 						class="not-prose mx-auto mb-5 block w-40 rounded-lg shadow-xl ring-1 ring-black/10 sm:float-right sm:mb-3 sm:ml-6 sm:mt-1 sm:w-44 md:w-52"
 					/>
+				)}
+				{post.data.talk && (
+					<>
+						<YouTubeEmbed id={post.data.talk.youtube.id} start={post.data.talk.youtube.start} title={title} />
+						<TalkLinks youtube={post.data.talk.youtube} slides={post.data.talk.slides} />
+					</>
 				)}
 				<slot />
 			</div>

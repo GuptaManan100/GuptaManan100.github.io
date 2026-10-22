@@ -67,11 +67,20 @@ const hasSeriesInfo = content.data.seriesId && content.data.orderInSeries;
 		<FormattedDate date={content.data.publishDate} dateTimeOptions={dateTimeOptions} class="flex flex-shrink-0" />
 	</span>
 	<Separator type="dot" />
-	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="hugeicons:book-open-01" />
-		{/* @ts-ignore:next-line. TODO: add reading time to collection schema? */}
-		{content.rendered?.metadata?.frontmatter?.readingTime ? `${content.rendered.metadata.frontmatter.readingTime}` : "Less than one minute read"}
-	</span>
+	{
+		content.data.talk ? (
+			<span class="flex items-center h-[1.75rem]">
+				<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="solar:microphone-3-linear" />
+				Talk at {content.data.talk.event}
+			</span>
+		) : (
+			<span class="flex items-center h-[1.75rem]">
+				<Icon aria-hidden="true" class="flex items-center inline-block h-4 w-4 me-1" focusable="false" name="hugeicons:book-open-01" />
+				{/* @ts-ignore:next-line. TODO: add reading time to collection schema? */}
+				{content.rendered?.metadata?.frontmatter?.readingTime ? `${content.rendered.metadata.frontmatter.readingTime}` : "Less than one minute read"}
+			</span>
+		)
+	}
 	{
 		content.data.updatedDate && (
 			<Separator type="dot" />
