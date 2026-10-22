@@ -1,7 +1,7 @@
 ---
 title: "The challenges of supporting foreign key constraints"
 description: "PlanetScale launched support for foreign key constraints. This article covers some of the behind-the-scenes technical challenges we had to overcome to support them."
-publishDate: "2025-06-08"
+publishDate: "2023-12-05"
 tags: ["planetscale", "mysql", "vitess", "foreign-keys", "database", "engineering"]
 ---
 

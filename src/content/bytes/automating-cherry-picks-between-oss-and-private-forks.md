@@ -1,7 +1,7 @@
 ---
 title: "Automating cherry-picks between OSS and private forks"
 description: "Learn how PlanetScale keeps its private fork of Vitess up-to-date with OSS"
-publishDate: "2025-06-08"
+publishDate: "2025-01-14"
 tags: ["planetscale", "vitess", "automation", "git", "open-source", "engineering"]
 weight: 2
 ---

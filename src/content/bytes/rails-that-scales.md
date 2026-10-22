@@ -1,7 +1,7 @@
 ---
 title: "Rails that scales - Powered by Vitess"
 description: "Announcing compatibility of Vitess with Rails"
-publishDate: "2025-06-02"
+publishDate: "2021-12-16"
 tags: ["vitess", "mysql", "rails", "scaling", "web", "framework"]
 weight: 2
 ---

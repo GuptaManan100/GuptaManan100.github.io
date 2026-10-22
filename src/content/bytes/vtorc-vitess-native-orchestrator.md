@@ -1,7 +1,7 @@
 ---
 title: "VTOrc: Vitess-native Orchestrator"
 description: "Exploring VTOrc, the new Vitess-native orchestration tool that automates fault detection and repairs"
-publishDate: "2025-06-02"
+publishDate: "2022-09-21"
 tags: ["vitess", "mysql", "orchestration", "distributed-systems", "database"]
 weight: 3
 ---
